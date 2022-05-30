@@ -1,0 +1,111 @@
+<nav class="navUser">
+    {{#or customer (unless theme_settings.restrict_to_login)}}
+        {{> components/common/currency-selector}}
+    {{/or}}
+
+    <ul class="navUser-section navUser-section--alt">
+        {{#if customer.store_credit.value '>' 0}}
+            <li class="navUser-item">
+                <a class="navUser-action navUser-action--storeCredit"
+                   data-dropdown="storeCredit-dropdown"
+                   data-options="align:bottom"
+                   href="{{urls.cart}}"
+                   aria-label="{{lang 'common.store_credit_overview' credit=customer.store_credit.formatted}}"
+                >
+                    <span class="navUser-action-divider">
+                        {{lang 'common.store_credit_overview' credit=customer.store_credit.formatted}}
+                    </span>
+                </a>
+                <div class="dropdown-menu" id="storeCredit-dropdown" data-dropdown-content aria-hidden="true">
+                    {{{lang 'common.store_credit' store_credit=customer.store_credit.formatted}}}
+                </div>
+            </li>
+        {{/if}} 
+        
+       <li class="navUser-item">
+            <a class="navUser-action navUser-item--compare"
+               href="{{urls.compare}}"
+               data-compare-nav
+               aria-label="{{lang 'common.compare'}}"
+            >
+             <svg xmlns="http://www.w3.org/2000/svg" width="31" height="21.7" viewBox="0 0 31 21.7">
+                  <path id="compare_icon_black" d="M12.865,18.95H2v3.1H12.865V26.7l6.184-6.2-6.184-6.2Zm9.269-1.55V12.75H33V9.65H22.134V5L15.95,11.2Z" transform="translate(-2 -5)"/>
+                </svg>
+                
+                
+                <span class="countPill countPill--positive countPill--alt"></span>
+                            </a>
+        </li>
+        
+            {{#if customer}}
+            <li class="navUser-item navUser-item--account">
+                <a class="navUser-action"
+                   href="{{urls.account.index}}"
+                   aria-label="{{lang 'common.account'}}"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30.45" height="30.45" viewBox="0 0 30.45 30.45">
+                      <path id="account_icon" d="M41,26A15,15,0,1,0,56,41,15,15,0,0,0,41,26ZM34.75,51.806V51a6.25,6.25,0,0,1,12.5,0v.806A12.382,12.382,0,0,1,34.75,51.806ZM37.25,38.5A3.75,3.75,0,1,1,41,42.25,3.75,3.75,0,0,1,37.25,38.5ZM49.681,49.969a8.75,8.75,0,0,0-4.656-6.731,6.25,6.25,0,1,0-8.05,0,8.75,8.75,0,0,0-4.656,6.731,12.5,12.5,0,1,1,17.675-.313C49.891,49.762,49.787,49.866,49.681,49.969Z" transform="translate(-25.775 -25.775)" fill="#333" stroke="#fff" stroke-width="0.45"/>
+                    </svg>
+                </a>
+                <a class="navUser-action logout_link"
+                   href="{{urls.auth.logout}}"
+                   aria-label="{{lang 'common.logout'}}"
+                >
+                   <svg xmlns="http://www.w3.org/2000/svg" width="21.227" height="21" viewBox="0 0 28.227 27">
+                    <g id="logout" transform="translate(0 0)">
+                      <path id="Path_16237" data-name="Path 16237" d="M168.048,220.841h-17.8a.92.92,0,1,1,0-1.841h17.8a.92.92,0,0,1,0,1.841Zm0,0" transform="translate(-140.741 -206.42)"></path>
+                      <path id="Path_16238" data-name="Path 16238" d="M155.169,145.312a.913.913,0,0,1-.651-.27l-4.909-4.909a.921.921,0,0,1,0-1.3l4.909-4.909a.921.921,0,1,1,1.3,1.3l-4.259,4.259,4.259,4.259a.92.92,0,0,1-.652,1.571Zm0,0" transform="translate(-140.749 -125.983)"></path>
+                      <path id="Path_16239" data-name="Path 16239" d="M13.5,27.332A13.5,13.5,0,1,1,26.065,8.894a.92.92,0,1,1-1.713.674,11.658,11.658,0,1,0,0,8.531.92.92,0,1,1,1.713.674A13.431,13.431,0,0,1,13.5,27.332Zm0,0" transform="translate(0 -0.332)"></path>
+                    </g>
+                  </svg>
+
+                </a>
+              </li>
+            {{else}}
+            <li class="navUser-item navUser-item--account">
+                <a class="navUser-action"
+                   href="#popupLogin"
+                   aria-label="{{lang 'common.login'}}"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30.45" height="30.45" viewBox="0 0 30.45 30.45">
+                      <path id="account_icon" d="M41,26A15,15,0,1,0,56,41,15,15,0,0,0,41,26ZM34.75,51.806V51a6.25,6.25,0,0,1,12.5,0v.806A12.382,12.382,0,0,1,34.75,51.806ZM37.25,38.5A3.75,3.75,0,1,1,41,42.25,3.75,3.75,0,0,1,37.25,38.5ZM49.681,49.969a8.75,8.75,0,0,0-4.656-6.731,6.25,6.25,0,1,0-8.05,0,8.75,8.75,0,0,0-4.656,6.731,12.5,12.5,0,1,1,17.675-.313C49.891,49.762,49.787,49.866,49.681,49.969Z" transform="translate(-25.775 -25.775)" fill="#333" stroke="#fff" stroke-width="0.45"/>
+                    </svg>
+                </a>
+            {{/if}}
+        </li>
+        <li class="navUser-item navUser-item--cart">
+            <a class="navUser-action"
+               data-cart-preview
+               data-dropdown="cart-preview-dropdown"
+               data-options="align:right"
+               href="{{urls.cart}}"
+               aria-label="{{lang 'cart.nav_aria_label'}}"
+            >
+                <span class="navUser-item-cartLabel">
+                    {{!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="29" height="30" viewBox="0 0 29 30">
+                      <defs>
+                        <clipPath id="clip-path">
+                          <rect id="Rectangle_353" data-name="Rectangle 353" width="29" height="30" transform="translate(1829 35)" fill="red" opacity="0.5"/>
+                        </clipPath>
+                      </defs>
+                      <g id="cart_icon" transform="translate(-1829 -35)" clip-path="url(#clip-path)">
+                        <g id="Group_2" data-name="Group 2" transform="translate(1831 36)" opacity="0.999">
+                          <g id="Group_1" data-name="Group 1" transform="translate(4.884 11.041)">
+                            <circle id="Ellipse_1" data-name="Ellipse 1" cx="1.591" cy="1.591" r="1.591" transform="translate(0)"/>
+                            <circle id="Ellipse_2" data-name="Ellipse 2" cx="1.591" cy="1.591" r="1.591" transform="translate(12.123)"/>
+                          </g>
+                          <path id="Path_1" data-name="Path 1" d="M-796.65,38.7V33.625a6.117,6.117,0,0,0-6.125-6.125h0a6.117,6.117,0,0,0-6.125,6.125V38.7" transform="translate(815.312 -27.5)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="2"/>
+                          <path id="Path_2" data-name="Path 2" d="M-849.2,77.5V94.061a3.483,3.483,0,0,0,3.484,3.484h18.1a3.48,3.48,0,0,0,3.484-3.468V77.5Z" transform="translate(849.2 -69.545)" fill="none" stroke="#000" stroke-linecap="round" stroke-width="2"/>
+                        </g>
+                      </g>
+                    </svg>--}}
+                    <img src="https://store-haxq1vvmi9.mybigcommerce.com/content/cart_icon.png" alt="Cart" />
+                </span>
+                <span class="countPill cart-quantity"></span>
+            </a>
+
+            <div class="dropdown-menu" id="cart-preview-dropdown" data-dropdown-content aria-hidden="true"></div>
+        </li>
+    </ul>
+    
+</nav>

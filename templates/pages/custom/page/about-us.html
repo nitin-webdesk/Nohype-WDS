@@ -1,0 +1,75 @@
+
+{{#partial "page"}}
+<section class="page row about_mn">
+    {{!--
+    <div class="sec-about-desc row">
+        <div class="about-images">
+            <div class="left">
+                <div class="main-outer">
+                    <h2>OUR MISSION</h2>
+                    <p>NO HYPE is a platform that emphasizes the intersection between art and urban culture. We strive to foster a community where authentic creativity is intelligently and comprehensively celebrated rather than appropriated.</p>
+                </div>
+            </div>
+            <div class="right">
+                <div class="main-outer">
+                    <img class="lazyload" data-src="{{cdn 'webdav:about-img-1.jpg'}}" src="{{cdn 'webdav:about-img-1.jpg'}}">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sec-about-desc row">
+        <div class="about-images">
+            <div class="left">
+                <div class="main-outer">
+                    <img class="lazyload" data-src="{{cdn 'webdav:about-img-2.jpg'}}" src="{{cdn 'webdav:about-img-2.jpg'}}">
+                </div>
+            </div>
+            <div class="right">
+                <div class="main-outer">
+                    <h2>OUR GOAL</h2>
+                    <h4>UPDATING THE PERCEPTION OF WORLD THROUGH ART</h4>
+                    <p>1,000 Artworks & counting…</p>
+                    <p>We’ve come together as artists as part of an urban art movement. Our art is bold, fresh and often thought-provoking.</p>
+                    <a href="#" class="learn-more">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
+    --}}
+    
+    <div class="page-banner row about-video">
+        <div class="main-video">
+            <iframe src="https://www.youtube.com/embed/9xwazD5SyVg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="video"></iframe>
+        </div>
+    </div>
+    {{> components/custom/homepage-newsletter}}
+</section>
+
+<style>
+    .body > .container{
+        max-width: 100%;
+    }
+    .body{
+        margin-top:0;
+    }
+.main-video {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 44.50%;
+}
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+</style>
+
+{{/partial}}
+
+{{> layout/base}}
+
+

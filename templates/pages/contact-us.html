@@ -1,0 +1,57 @@
+{{#partial "page"}}
+
+{{> components/common/breadcrumbs breadcrumbs=breadcrumbs}}
+
+<section class="page">
+    {{#unless theme_settings.hide_contact_us_page_heading }}
+        <h1 class="page-heading">{{page.title}}</h1>
+    {{/unless}}
+
+    {{#if page.sub_pages}}
+        <nav class="navBar navBar--sub">
+            <ul class="navBar-section account-navigation">
+                {{#each page.sub_pages}}
+                    <li class="navBar-item"><a class="navBar-action" href="{{url}}">{{title}}</a></li>
+                {{/each}}
+            </ul>
+        </nav>
+    {{/if}}
+
+    <div id="contact-us-page" class="page-content page-content--centered cms_cnt">
+         <div class="form_box">
+            <div class="form_left">
+                <div class="form_header_list">
+                    <ul>
+                       
+                        <li>
+                            <div class="form_img">
+                            
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="20" viewBox="0 0 26 20">
+                      <path id="Path_1393" data-name="Path 1393" d="M23.452,16.218V7.312L26,5.2V20H0V4.719L2.549,6.844v9.391l4.859-6,2.056,1.485L4.78,17.5H21.236l-4.445-5.469,2.056-1.484ZM0,0H26V2.593L15.74,10.266a3.98,3.98,0,0,1-2.406.719,3.954,3.954,0,0,1-2.389-.719L0,2.109ZM14.227,8.3l7.982-5.8H4.477l7.98,5.8a1.689,1.689,0,0,0,1.769,0Z" fill="#000"></path>
+                    </svg>
+               </div>
+               <div class="form_text">
+                    <a href="mailto:connect@nohype.com">connect@nohype.com</a>
+               </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+             <div class="form_right">
+                {{#if forms.contact.success}}
+                <div id="contact-us-success">{{{lang 'forms.contact_us.successful' shopPath=urls.home}}}</div>
+                {{else}}
+                <div class="cms_inner cms_cnt">{{{page.content}}}</div>
+                    {{> components/page/contact-us-form}}
+                {{/if}}
+            </div>
+    </div>
+
+    </div>
+
+</section>
+
+{{/partial}}
+
+{{> layout/base}}

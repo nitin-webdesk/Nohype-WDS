@@ -1,0 +1,172 @@
+<div id="popupLogin" class="overlay">
+			<div class="popup">
+				<div id="popupLoginWindow" class="modal--pupuploginWindow login_popup_main">
+					 
+					<div class="modal_body">
+						<div class="login_popup">
+							<div class="login_popup_inner">
+								<h3>Sign In</h3>
+								<a class="close" href="#">&times;</a>
+								
+							</div>
+							<div class="alertBox alertBox--error">
+								<div class="alertBox-column alertBox-icon">
+									<icon glyph="ic-error" class="icon" aria-hidden="true">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg>
+									</icon>
+								</div>
+								<p class="alertBox-column alertBox-message"><span>Oops, something went wrong. Please try again.</span></p>
+							</div>
+							<div class="alertBox alertBox--success">
+								<div class="alertBox-column alertBox-icon">
+									<icon glyph="ic-success" class="icon" aria-hidden="true">
+										<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path></svg>
+									</icon>
+								</div>
+								<p class="alertBox-column alertBox-message"><span>You are now logged in!</span></p>
+							</div>
+							<form class="form login_form" id="popupLoginWindowForm"> 
+								<div class="form-field">
+									<label class="form-label" for="login_email">Email address:</label>
+									<input class="form-input" name="login_email" id="login_email" type="email">
+								</div>
+								<div class="form-field">
+									<label class="form-label" for="login_pass">{{lang 'login.field_password'}}</label>
+									<input class="form-input" id="login_pass" type="password" name="login_pass">
+								</div>
+								
+								<div class="form-actions">
+									<input type="submit" class="button button--primary" value="Sign in">
+								</div>
+								<div class="popup_forgot">
+									<a class="forgot-password" href="{{urls.auth.forgot_password}}">{{lang 'login.forgot_password' }}</a>
+								</div>
+								<p class="create_account_link"><a href="{{urls.auth.create_account}}">Create an account.</a></p>
+							</form>
+							
+						</div>
+					</div>
+					<div class="loadingOverlay" style="display: none;"></div>
+			</div>
+				
+			</div>
+		</div>
+		
+		<style>
+		.login_popup_main .login_popup .alertBox.alertBox--error, .login_popup_main .login_popup .alertBox.alertBox--success {
+    display: none;
+}
+		.overlay {
+		  position: fixed;
+		  top: 0;
+		  bottom: 0;
+		  left: 0;
+		  right: 0;
+		  background: rgba(0, 0, 0, 0.7);
+		  transition: opacity 500ms;
+		  visibility: hidden;
+		  opacity: 0;
+		}
+		.overlay:target {
+		  visibility: visible;
+		  opacity: 1;
+		  z-index: 1004;
+		}
+
+		.popup {
+		  margin: 70px auto;
+		  padding: 25px;
+		  background: #fff;
+		  border-radius: 5px;
+		  width: 35%;
+		  position: relative;
+		  transition: all 5s ease-in-out;
+		  top:5%;
+		  z-index: 1005;
+		}
+
+		.popup h2 {
+		  margin-top: 0;
+		  color: #333;
+		  font-family: Tahoma, Arial, sans-serif;
+		}
+		.popup .close {
+		  position: absolute;
+		  top: 20px;
+		  right: 30px;
+		  transition: all 200ms;
+		  font-size: 30px;
+		  font-weight: bold;
+		  text-decoration: none;
+		  color: #000;
+		}
+		.popup .close:hover {
+		  color: #CB4335;
+		}
+		.popup .content {
+		  max-height: 30%;
+		  overflow: auto;
+		}
+		.loadingOverlay {
+    background-color: rgba(255,255,255,.9);
+    display: none;
+    z-index: 20;
+}
+.loadingOverlay {
+    background: rgba(51,51,51,.9);
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    opacity: 1;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: all 250ms ease-out;
+    width: 100%;
+}
+.popup h3{
+    margin: 0 0 14px;text-transform: uppercase;display: inline-block;
+}
+.popup .form-label{
+    color: #000;
+}
+.popup input{
+	border-color: #ccc;border-radius: 6px;font-size: 16px;color: #999;
+}
+.popup .popup_forgot{
+    display: inline-block;width:calc(100% - 130px);float: right;
+}
+.popup .form-actions{
+    display: inline-block;float: left;width:120px;margin: 0;
+}
+.popup .form-actions .button{
+    color: #fff;
+}
+.popup .forgot-password{
+    font-weight:normal;color:#CB4335;font-family:'AvenirHeavy';line-height: 46px;text-decoration: underline;
+}
+.popup .forgot-password:hover{
+    color: #000;
+}
+.create_account_link{
+    display: inline-block;width: 100%;margin: 15px 0 0;text-align: left;text-decoration: underline;
+
+}
+.popup .form-field--error .form-field-error, .popup .form-field--error .form-inlineMessage{
+    font-size: 14px;
+}
+@media screen and (max-width: 479px) {
+    .popup .popup_forgot{
+        width: calc(100% - 110px);
+    }
+    .popup .form-actions{
+        width:100px;
+    }
+    .popup .form-actions .button{
+        padding:10px 0;
+    }
+    .create_account_link{
+        margin: 5px 0 0;
+    }
+}
+		</style>

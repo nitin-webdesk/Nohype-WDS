@@ -1,0 +1,53 @@
+<nav class="pagination" aria-label="pagination">
+    <ul class="pagination-list">
+         {{#if previous}}
+            <li class="pagination-item pagination-item--previous {{#if previous}}enable{{else}}disable{{/if}}">
+                <a class="pagination-link"
+                   href="{{previous}}"
+                   {{#unless reload}}data-faceted-search-facet{{/unless}}
+                   aria-label="{{lang 'common.previous'}}"
+                >
+                    <i class="icon" aria-hidden="true">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="8.054" height="12.819" viewBox="0 0 8.054 12.819">
+						  <path id="Path_1547" data-name="Path 1547" d="M5.906,0,0,5.886l5.906,5.493" transform="translate(1.442 0.708)" fill="none" stroke="#000" stroke-width="2"/>
+						</svg>
+
+                    </i>
+                    Prev
+                </a>
+            </li>
+        {{/if}}
+        {{#each links}}
+            <li class="pagination-item {{#if this.number '==' ../current}}pagination-item--current{{/if}}">
+                <a class="pagination-link"
+                   href="{{this.url}}"
+                   {{#unless reload}}data-faceted-search-facet{{/unless}}
+                   {{#if this.number '==' ../current}}
+                   aria-current="page"
+                   data-pagination-current-page-link
+                   {{/if}}
+                   aria-label="{{lang 'common.paginator.page_of' current=this.number total=../links.length}}"
+                >
+                    {{this.number}}
+                </a>
+            </li>
+        {{/each}}
+
+         {{#if next}}
+            <li class="pagination-item pagination-item--next {{#if next}}enable{{else}}disable{{/if}}">
+                <a class="pagination-link"
+                   href="{{next}}"
+                   {{#unless reload}}data-faceted-search-facet{{/unless}}
+                   aria-label="{{lang 'common.next'}}"
+                >
+                    Next
+                    <i class="icon" aria-hidden="true">
+                       <svg xmlns="http://www.w3.org/2000/svg" width="8.054" height="12.819" viewBox="0 0 8.054 12.819">
+						  <path id="Path_1547" data-name="Path 1547" d="M0,0,5.906,5.886,0,11.379" transform="translate(0.706 0.708)" fill="none" stroke="#fff" stroke-width="2"/>
+						</svg>
+                    </i>
+                </a>
+            </li>
+        {{/if}}
+    </ul>
+</nav>
